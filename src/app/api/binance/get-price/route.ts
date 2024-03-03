@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
     const coinSTRING = searchParams.get('coin');
     const coins = coinSTRING?.split('|') ?? ['BTCUSDT'];
     const spot = await axios.get<BinanceResponse[]>(
-      'https://data.binance.com/api/v3/ticker/bookTicker'
+      'https://api.binance.com/api/v3/ticker/bookTicker'
     );
     const futures = await axios.get<BinanceResponse[]>(
       'https://fapi.binance.com/fapi/v1/ticker/bookTicker'
