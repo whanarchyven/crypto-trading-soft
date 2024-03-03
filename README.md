@@ -1,4 +1,4 @@
-# Next.js Project
+# Next.js Project + Husky linter
 
 ## Первый запуск
 
