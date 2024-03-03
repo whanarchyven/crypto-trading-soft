@@ -2,6 +2,7 @@ import TradingSettings from '@/widgets/trading-settings';
 import OperationsHistory from '@/widgets/operations-history';
 import ActivesGraph from '@/widgets/actives-graph/actives-graph';
 import BudgetSummary from '@/widgets/budget-summary';
+import PriceTable from '@/widgets/price-table';
 
 export default function Home() {
   return (
@@ -15,6 +16,9 @@ export default function Home() {
             <ActivesGraph />
             <BudgetSummary />
           </div>
+        </div>
+        <div className={'w-full'}>
+          <PriceTable />
         </div>
       </main>
     </>
