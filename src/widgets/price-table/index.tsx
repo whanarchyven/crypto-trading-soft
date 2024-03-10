@@ -1,8 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { fetchBybitPrice } from '@/shared/api/exchagers-data-fetching/fetchBybitPrice';
-import { fetchBinancePrice } from '@/shared/api/exchagers-data-fetching/fetchBinancePrice';
-
+import React, { useState } from 'react';
 interface TableData {
   headers: string[];
   rows: string[];
@@ -15,19 +12,10 @@ const PriceTable = () => {
     { name: 'bybit', data: {} },
   ]);
 
-  const updateData = async () => {
-    const binanceData = await fetchBinancePrice('BTCUSDT|ETHUSDT');
-    const bybitData = await fetchBybitPrice('BTCUSDT|ETHUSDT|BTCUSD|ETHUSD');
-    setExchangers([
-      { name: 'binance', data: binanceData },
-      { name: 'bybit', data: bybitData },
-    ]);
-  };
-
-  useEffect(() => {
-    const intervalId = setInterval(updateData, 5000);
-    return () => clearInterval(intervalId);
-  }, []);
+  setExchangers([
+    { name: 'binance', data: {} },
+    { name: 'bybit', data: {} },
+  ]);
 
   const data: TableData = {
     headers: ['Binance', 'Bybit'],

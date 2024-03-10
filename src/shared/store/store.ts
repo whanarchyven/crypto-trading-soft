@@ -5,12 +5,14 @@ import {
   ThunkAction,
 } from '@reduxjs/toolkit';
 import { createWrapper, HYDRATE } from 'next-redux-wrapper';
-import tradingStatus from './exampleSlice';
+import tradingStatus from './tradingStatusSlice';
+import tradingSettings from './tradingSettingsSlice';
 import { baseApi } from './api/baseApi';
 import { rtkQueryErrorLogger } from './api/middlewares/errorHandling';
 
 const combinedReducer = combineReducers({
   tradingStatus,
+  tradingSettings,
   [baseApi.reducerPath]: baseApi.reducer, // for RTK query
 });
 

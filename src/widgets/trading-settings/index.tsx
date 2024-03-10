@@ -5,15 +5,16 @@ import { useAppSelector } from '@/shared/store/hooks/useAppSelector';
 import {
   tradingStatusActions,
   tradingStatusSelectors,
-} from '@/shared/store/exampleSlice';
+} from '@/shared/store/tradingStatusSlice';
 import { cva } from 'class-variance-authority';
 import Button from '@/shared/ui/Button/Button';
 import { useAppDispatch } from '@/shared/store/hooks/useAppDispatch';
+import { tradingSettingsActions } from '@/shared/store/tradingSettingsSlice';
 
 interface exchangerStateInterface {
   id: exchangerInterface['name'];
-  spot: number;
-  futures: number;
+  spotFee: number;
+  futuresFee: number;
   deposit: number;
 }
 
@@ -41,32 +42,14 @@ const TradingSettings = () => {
   >([
     {
       id: 'binance',
-      spot: 0,
-      futures: 0,
-      deposit: 0,
-    },
-    {
-      id: 'okx',
-      spot: 0,
-      futures: 0,
+      spotFee: 0,
+      futuresFee: 0,
       deposit: 0,
     },
     {
       id: 'bybit',
-      spot: 0,
-      futures: 0,
-      deposit: 0,
-    },
-    {
-      id: 'huobi',
-      spot: 0,
-      futures: 0,
-      deposit: 0,
-    },
-    {
-      id: 'mexc',
-      spot: 0,
-      futures: 0,
+      spotFee: 0,
+      futuresFee: 0,
       deposit: 0,
     },
   ]);
@@ -131,6 +114,9 @@ const TradingSettings = () => {
       <Button
         onClick={() => {
           dispatch(tradingStatusActions.setStatus('trading'));
+          dispatch(
+            tradingSettingsActions.setSettings({ settings: exchangersState })
+          );
         }}
         className={cvaButton()}
         isLoading={tradingStatus == 'trading'}>
